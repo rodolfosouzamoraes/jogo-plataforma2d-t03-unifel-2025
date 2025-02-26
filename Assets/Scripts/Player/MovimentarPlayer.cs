@@ -31,6 +31,9 @@ public class MovimentarPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Verificar se o jogo acabou
+        if(CanvasGameMng.Instance.fimDeJogo == true) return;
+
         Movimentar();
         Pular();
         PularDaParede();
@@ -204,6 +207,10 @@ public class MovimentarPlayer : MonoBehaviour
             //Ativa a animação de deslizar da parede
             animacaoPlayer.PlayDeslizarParede();
 
+            //Ajuste na visão do player
+            if(limiteEsquerda.estaNoLimite == true) flipCorpo.OlharEsquerda();
+            else flipCorpo.OlharDireita();
+
             //Obter a entrada do usuário para poder efetuar o pulo pela parede
             if(Input.GetButtonDown("Jump")){
 
@@ -256,5 +263,13 @@ public class MovimentarPlayer : MonoBehaviour
     /// </summary>
     public void ResetarFisicaDeMovimentacao(){
         rigidbody2d.velocity = Vector3.zero;
+    }
+
+    /// <summary>
+    /// Método para remover a gravidade
+    /// </summary>
+    public void RemoverGravidade(){
+        //Colocar o rigidbody do player como Static
+        rigidbody2d.bodyType = RigidbodyType2D.Static;
     }
 }

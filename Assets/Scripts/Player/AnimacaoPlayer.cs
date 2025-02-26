@@ -72,4 +72,19 @@ public class AnimacaoPlayer : MonoBehaviour
         animator.SetBool("Correndo", false);
         animator.SetBool("Parado", false);  
     }
+
+    /// <summary>
+    /// Ativa a animação de dano do personagem
+    /// </summary>
+    public void PlayDano(){
+        animator.SetTrigger("Dano");
+    }
+
+    /// <summary>
+    /// Ativa a animação de morte do jogador
+    /// </summary>
+    public void PlayMorte(){
+        animator.SetBool("Fim", true);
+        animator.SetTrigger("Morte");
+    }
 }
