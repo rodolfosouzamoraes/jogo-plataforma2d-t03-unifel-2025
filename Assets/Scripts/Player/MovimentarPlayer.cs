@@ -272,4 +272,18 @@ public class MovimentarPlayer : MonoBehaviour
         //Colocar o rigidbody do player como Static
         rigidbody2d.bodyType = RigidbodyType2D.Static;
     }
+
+    /// <summary>
+    /// Método para tirar as funções de movimentação do player
+    /// </summary>
+    public void CongelarPlayer(){
+        //Resetar a física de movimentação
+        ResetarFisicaDeMovimentacao();
+
+        //Remover a gravidade
+        RemoverGravidade();
+
+        //Ativar a animação de parado do player
+        animacaoPlayer.PlayParado();
+    }
 }

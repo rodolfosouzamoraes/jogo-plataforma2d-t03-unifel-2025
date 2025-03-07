@@ -19,7 +19,7 @@ public class ItemColetavel : MonoBehaviour
             animator.SetTrigger("Coletar");
 
             //Incrementar a coleta do item
-
+            CanvasGameMng.Instance.IncrementarItemColetavel();
         }
     }
 
