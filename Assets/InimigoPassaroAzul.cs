@@ -69,4 +69,26 @@ public class InimigoPassaroAzul : MonoBehaviour
             corpoPassaroAzul.flipX = !corpoPassaroAzul.flipX;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D colisao)
+    {
+        //Verificar se o player colidiu com o passaro e se ele está vivo
+        if(colisao.gameObject.tag == "Player" && estaMorto == false){
+            //Dizer que o passaro morreu
+            estaMorto = true;
+
+            //Arremessar o player
+            colisao.GetComponent<PlayerControlador>().MovimentarPlayer.ArremessarPlayer();
+
+            //Ativo a animação de morte
+            animator.SetTrigger("Morte");
+        }
+    }
+
+    /// <summary>
+    /// Método acionado pela animação de morte para poder destruir o objeto
+    /// </summary>
+    public void DestruirPassaro(){
+        Destroy(passaroAzul);
+    }
 }
