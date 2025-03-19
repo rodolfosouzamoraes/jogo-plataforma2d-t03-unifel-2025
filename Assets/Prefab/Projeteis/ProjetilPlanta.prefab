@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2309481284282851879}
   - component: {fileID: 3659141132263215916}
   - component: {fileID: 5529784442923198605}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjetilPlanta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1238414303
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8cfb28fcaca4a474e80cd8eb3b8f6fc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -14,7 +14,7 @@ TagManager:
   - Limite
   - Player
   - Coletavel
-  - 
+  - Projetil
   - 
   - 
   - 
@@ -41,6 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Mapa
+    uniqueID: 3821940801
+    locked: 0
   - name: Elementos
     uniqueID: 1238414303
+    locked: 0
+  - name: InimigoJogo
+    uniqueID: 3006592597
+    locked: 0
+  - name: Player
+    uniqueID: 854300643
     locked: 0
