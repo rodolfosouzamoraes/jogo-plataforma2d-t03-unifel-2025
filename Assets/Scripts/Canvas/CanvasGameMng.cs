@@ -48,6 +48,9 @@ public class CanvasGameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Adicionar um segundo a mais no tempo de jogo
+        tempoDeJogo += 1;
+
         //Adicionar o total de vidas que o player tem ao iniciar o jogo
         totalVidas = sptsVida.Length -1;
 
