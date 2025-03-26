@@ -13900,7 +13900,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3583171946438245466, guid: 46af32ba2de60be448d7b3261c477cf0, type: 3}
       propertyPath: tempoDeJogo
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4850432761979144432, guid: 46af32ba2de60be448d7b3261c477cf0, type: 3}
       propertyPath: m_Name

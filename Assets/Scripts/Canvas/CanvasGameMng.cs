@@ -45,6 +45,7 @@ public class CanvasGameMng : MonoBehaviour
     public Sprite[] sptsMedalhas; //Sprites com as medalhas, 1 - Bronze, 2 - Prata, 3 - Ouro
     private float qtdDeItensColetaveisNoLevel; //Total de itens coletaveis que existe no level ao iniciar o jogo
     private int idMedalha; //Identificador da medalha que o jogador conseguiu no level
+    private int idLevel; //Identificador do level atual
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +76,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Obter a quantidade de itens coletáveis que existe no level
         qtdDeItensColetaveisNoLevel = FindObjectsByType<ItemColetavel>(FindObjectsSortMode.None).Length;
+
+        //Identificar a cena atual
+        idLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -200,6 +204,9 @@ public class CanvasGameMng : MonoBehaviour
         //Calcular a medalha do level
         CalcularMedalhaLevel();
 
+        //Salvar os dados do level na memória
+        DBMng.SalvarDadosLevel(idLevel,totalItensColetados,idMedalha);
+
         //Exibir a tela do level completado e ocultar a tela do topo
         pnlLevelCompletado.SetActive(true);
         pnlTopo.SetActive(false);
@@ -230,5 +237,20 @@ public class CanvasGameMng : MonoBehaviour
 
         //Atribuo a medalha na imagem do icone
         imgIconeMedalha.sprite = sptsMedalhas[idMedalha];
+    }
+
+    /// <summary>
+    /// Método para ir para o próximo level
+    /// </summary>
+    public void ProximoLevel(){
+        //Carregar a proxima cena
+        SceneManager.LoadScene(idLevel+1);
+    }
+
+    /// <summary>
+    /// Método para retornar a cena menu
+    /// </summary>
+    public void VoltarAoMenu(){
+        SceneManager.LoadScene(0);
     }
 }
