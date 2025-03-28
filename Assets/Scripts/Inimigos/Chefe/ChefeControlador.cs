@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -46,10 +45,16 @@ public class ChefeControlador : MonoBehaviour
 
             //Ativa a animação de morte do chefe
             animator.SetTrigger("Morte");
+
+            //Ativa audio de morte do chefe
+            AudioMng.Instance.PlayAudioMorteChefe();
         }
         else{
             //Ativa animação de dano
             animator.SetTrigger("Dano");
+
+            //Ativa audio dano inimigo
+            AudioMng.Instance.PlayAudioDanoInimigo();
         }
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZonaChefe : MonoBehaviour
@@ -16,6 +14,9 @@ public class ZonaChefe : MonoBehaviour
         if(colisao.gameObject.tag == "Player"){
             //Habilita a movimentacao do chefe
             chefeControlador.HabilitaMovimentacao();
+
+            //Ativa audio do chefe
+            AudioMng.Instance.PlayAudioChefe();
 
             //Destroi o objeti
             Destroy(gameObject);

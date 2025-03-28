@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InimigoPassaroAzul : MonoBehaviour
@@ -82,6 +80,9 @@ public class InimigoPassaroAzul : MonoBehaviour
 
             //Ativo a animação de morte
             animator.SetTrigger("Morte");
+
+            //Ativa audio de dano
+            AudioMng.Instance.PlayAudioDanoInimigo();
         }
     }
 

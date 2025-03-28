@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovimentarPlayer : MonoBehaviour
@@ -96,6 +95,9 @@ public class MovimentarPlayer : MonoBehaviour
                 //Ativa a animação do pulo
                 animacaoPlayer.PlayPulando();
 
+                //Ativar audio de pulo
+                AudioMng.Instance.PlayAudioPular();
+
                 //Habilitar o está pulando
                 estaPulando = true;
 
@@ -110,6 +112,9 @@ public class MovimentarPlayer : MonoBehaviour
                 if(puloDuplo == true){
                     //Ativa animação do pulo duplo
                     animacaoPlayer.PlayPuloDuplo();
+
+                    //Ativar audio de pulo
+                    AudioMng.Instance.PlayAudioPular();
 
                     //Habilita novamente o pulo
                     estaPulando = true;
@@ -227,6 +232,9 @@ public class MovimentarPlayer : MonoBehaviour
 
                 //Ativa animação de pulo
                 animacaoPlayer.PlayPulando();
+
+                //Ativar audio de pulo
+                AudioMng.Instance.PlayAudioPular();
 
                 //Habilitar o pulo
                 estaPulando = true;

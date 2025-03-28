@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FimDoLevel : MonoBehaviour
@@ -12,6 +10,9 @@ public class FimDoLevel : MonoBehaviour
         if(colisao.gameObject.tag == "Player"){
             //Ativar a animação do fim do level
             animator.SetBool("FimDoLevel", true);
+
+            //Ativar o audio de fim do level
+            AudioMng.Instance.PlayAudioItemFinal();
 
             //Finalizar o level
             CanvasGameMng.Instance.CompletouLevel();

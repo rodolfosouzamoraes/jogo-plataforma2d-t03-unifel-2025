@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbrirPortao : MonoBehaviour
@@ -40,6 +38,8 @@ public class AbrirPortao : MonoBehaviour
 
             //Desativar a fechadura
             fechadura.SetActive(false);
+
+            AudioMng.Instance.PlayAudioPortao();
 
             //Desativar a colisão do portao
             BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();

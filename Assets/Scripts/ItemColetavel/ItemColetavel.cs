@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemColetavel : MonoBehaviour
@@ -17,6 +15,9 @@ public class ItemColetavel : MonoBehaviour
 
             //Ativar a animação de coleta do item
             animator.SetTrigger("Coletar");
+
+            //Ativa audio de coleta da fruta
+            AudioMng.Instance.PlayAudioFruta();
 
             //Incrementar a coleta do item
             CanvasGameMng.Instance.IncrementarItemColetavel();

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FecharPortao : MonoBehaviour
@@ -31,6 +29,8 @@ public class FecharPortao : MonoBehaviour
 
     private void AtivarFechadura(){
         fechadura.SetActive(true);
+
+        AudioMng.Instance.PlayAudioPortao();
     }
 
     /// <summary>

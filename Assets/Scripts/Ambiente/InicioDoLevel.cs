@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InicioDoLevel : MonoBehaviour
@@ -14,5 +12,7 @@ public class InicioDoLevel : MonoBehaviour
 
         //Posicionar o player na posição inicial
         player.transform.position = posicaoInicialPlayer.transform.position;
+
+        AudioMng.Instance.PlayAudioSurgir();
     }
 }

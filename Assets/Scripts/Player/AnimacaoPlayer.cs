@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimacaoPlayer : MonoBehaviour
@@ -86,5 +84,9 @@ public class AnimacaoPlayer : MonoBehaviour
     public void PlayMorte(){
         animator.SetBool("Fim", true);
         animator.SetTrigger("Morte");
+    }
+
+    public void PlayAudioMovimentacao(){
+        AudioMng.Instance.PlayAudioCorrer();
     }
 }

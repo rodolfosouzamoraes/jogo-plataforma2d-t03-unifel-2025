@@ -49,6 +49,39 @@ public static class DBMng
     }
 
     //Salvar Volume
+    public static void SalvarVolume(float volumeVFX, float volumeMusica){
+        //Criar uma classe volume para armazenar os dados dentro dela
+        Volume volume = new Volume();
+        volume.vfx = volumeVFX;
+        volume.musica = volumeMusica;
+
+        //Converter a estrutura da classe em Json
+        string json = JsonUtility.ToJson(volume);
+
+        //Salvar o json na memória
+        PlayerPrefs.SetString(VOLUME,json);
+    }
 
     //Obter Volume
+    public static Volume ObterVolume(){
+        //Pegar a estrutura json salva na memória
+        string json = PlayerPrefs.GetString(VOLUME);
+
+        //Converter a estrutura json para a classe
+        Volume volume = JsonUtility.FromJson<Volume>(json);
+
+        //Verificar se o volume está nulo
+        if(volume == null){
+            //Salvo um volume inicial
+            SalvarVolume(0.5f,0.5f);
+
+            //Atualizar a variavel json
+            json = PlayerPrefs.GetString(VOLUME);
+
+            //Converter para a classe
+            volume = JsonUtility.FromJson<Volume>(json);
+        }
+
+        return volume;
+    }
 }

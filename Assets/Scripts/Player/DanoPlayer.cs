@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DanoPlayer : MonoBehaviour
@@ -11,8 +9,14 @@ public class DanoPlayer : MonoBehaviour
     /// Efetua um dano ao player
     /// </summary>
     public void EfetuarDano(){
+        //Verificar se acabou o jogo
+        if(CanvasGameMng.Instance.fimDeJogo == true) return;
+
         //Ativar a animação de dano
         animacaoPlayer.PlayDano();
+
+        //Ativar audio Dano
+        AudioMng.Instance.PlayAudioDanos();
 
         //Resetar a fisicao do jogador
         movimentarPlayer.ResetarFisicaDeMovimentacao();
@@ -36,5 +40,8 @@ public class DanoPlayer : MonoBehaviour
 
         //Ativar animação de morte
         animacaoPlayer.PlayMorte();
+
+        //Ativar audio de morte
+        AudioMng.Instance.PlayAudioMortePlayer();
     }
 }

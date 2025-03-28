@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InimigoRabanete : MonoBehaviour
@@ -87,6 +85,9 @@ public class InimigoRabanete : MonoBehaviour
 
         //Ativar animação de dano
         animator.SetTrigger("Dano");
+
+        //Ativa audio de dano
+        AudioMng.Instance.PlayAudioDanoInimigo();
 
         //Diz que houve colisão
         houveColisao = true;

@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +12,10 @@ public class CanvasMenuMng : MonoBehaviour
     public Sprite[] sptsMedalhasDosLevels;
     public GameObject[] paineis;
 
+    public Slider sldVFX;
+    public Slider sldMusica;
+    private Volume volume;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,27 @@ public class CanvasMenuMng : MonoBehaviour
 
         //Configura o painel do nível
         ConfigurarPainelNiveis();
+
+        //Configurar o painel de configurações
+        ConfigurarPainelConfiguracoes();
+
+        //Tocar o audio do menu
+        AudioMng.Instance.PlayAudioMenu();
+
+        //Ocultar o painel de loading
+        CanvasLoadingMng.Instance.OcultarPainelLoading();
+    }
+
+    private void ConfigurarPainelConfiguracoes(){
+        //obter os volumes salvos na memória
+        volume = DBMng.ObterVolume();
+
+        //Atualizar os valores nos sliders
+        sldVFX.value = volume.vfx;
+        sldMusica.value = volume.musica;
+
+        //Atualizar os audios nos audios sources
+        AudioMng.Instance.MudarVolume(volume);
     }
 
     private void ConfigurarPainelNiveis(){
@@ -66,6 +87,11 @@ public class CanvasMenuMng : MonoBehaviour
     /// </summary>
     public void IniciarLevel1(){
         SceneManager.LoadScene(1);
+
+        AudioMng.Instance.PlayAudioClick();
+
+        //Exibir a tela de carregando
+        CanvasLoadingMng.Instance.ExibirPainelLoading();
     }
 
     /// <summary>
@@ -76,6 +102,11 @@ public class CanvasMenuMng : MonoBehaviour
         if(cadeadosDosLevels[idLevel].activeSelf == false){
             //Iniciar o level
             SceneManager.LoadScene(idLevel);
+
+            AudioMng.Instance.PlayAudioClick();
+
+            //Exibir a tela de carregando
+            CanvasLoadingMng.Instance.ExibirPainelLoading();
         }
     }
 
@@ -83,6 +114,7 @@ public class CanvasMenuMng : MonoBehaviour
     /// Método para exibir o painel solicitado
     /// </summary>
     public void ExibirPainel(int id){
+
         //Ocultar todos os paineis por padrão
         foreach(var painel in paineis){
             painel.SetActive(false);
@@ -97,5 +129,37 @@ public class CanvasMenuMng : MonoBehaviour
     /// </summary>
     public void FecharJogo(){
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Método para atualizar os volumes
+    /// </summary>
+    public void AtualizarVolumes(){
+        volume = DBMng.ObterVolume();
+        AudioMng.Instance.MudarVolume(volume);
+    }
+
+    /// <summary>
+    /// Método utilizado no slider do volume vfx
+    /// </summary>
+    public void MudarVolumeVFX(){
+        //Salvar o novo volume
+        DBMng.SalvarVolume(sldVFX.value, volume.musica);
+        //Atualizar os volumes no jogo
+        AtualizarVolumes();
+    }
+
+    /// <summary>
+    /// Método utilizado no slider do volume musica
+    /// </summary>
+    public void MudarVolumeMusica(){
+        //Salvar o novo volume
+        DBMng.SalvarVolume(volume.vfx, sldMusica.value);
+        //Atualizar os volumes no jogo
+        AtualizarVolumes();
+    }
+
+    public void PlayAudioClick(){
+        AudioMng.Instance.PlayAudioClick();
     }
 }

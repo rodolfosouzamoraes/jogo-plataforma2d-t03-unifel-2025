@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColetarChave : MonoBehaviour
@@ -16,6 +14,8 @@ public class ColetarChave : MonoBehaviour
         if(colisao.gameObject.tag == "Player" && coletouChave == false){
             //Dizer que coletou a chave
             coletouChave = true;
+
+            AudioMng.Instance.PlayAudioChave();
 
             //Ocultar a textura da chave
             spriteRenderer.enabled = false;

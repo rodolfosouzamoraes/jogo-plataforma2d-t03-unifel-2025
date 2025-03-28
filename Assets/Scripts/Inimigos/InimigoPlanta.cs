@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InimigoPlanta : MonoBehaviour
@@ -43,6 +41,9 @@ public class InimigoPlanta : MonoBehaviour
         //Instanciar o projetil
         GameObject novoProjetil = Instantiate(projetil);
 
+        //Ativar o audio de tiro
+        AudioMng.Instance.PlayAudioProjetil();
+
         //Verificar para onde a plata está olhando para poder lançar o projetil para aquela direção
         if(corpoPlanta.flipX == true){
             //Posiciona o projetil
@@ -80,6 +81,8 @@ public class InimigoPlanta : MonoBehaviour
             //Ativo a animação de morte
             animator.SetTrigger("Morte");
             animator.SetBool("EstaMorto", true);
+
+            AudioMng.Instance.PlayAudioDanoInimigo();
         }
     }
 

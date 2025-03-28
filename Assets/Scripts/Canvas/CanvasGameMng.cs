@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -79,11 +78,26 @@ public class CanvasGameMng : MonoBehaviour
 
         //Identificar a cena atual
         idLevel = SceneManager.GetActiveScene().buildIndex;
+
+        //Configuração para rodar apenas quando o level for inicial manualmente
+        Volume volume = DBMng.ObterVolume();
+        AudioMng.Instance.MudarVolume(volume);
+
+        //Tocar o audio do level
+        AudioMng.Instance.PlayAudioLevel();
+
+        //Ocultar o canvas loading
+        CanvasLoadingMng.Instance.OcultarPainelLoading();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Verificar se clicou na tecla ESC para voltar ao menu
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            VoltarAoMenu();
+        }
+
         //Contar o tempo do jogo
         ContarTempo();
     }
@@ -142,6 +156,14 @@ public class CanvasGameMng : MonoBehaviour
     /// Reiniciar a cena atual do jogo
     /// </summary>
     public void ReiniciarLevelAtual(){
+
+        //Reinicia a cena do jogo
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
+    public void ReiniciarLevelPelaUI(){
+        CanvasLoadingMng.Instance.ExibirPainelLoading();
+
         //Reinicia a cena do jogo
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -243,6 +265,9 @@ public class CanvasGameMng : MonoBehaviour
     /// Método para ir para o próximo level
     /// </summary>
     public void ProximoLevel(){
+        //Exibir o painel de carregamento
+        CanvasLoadingMng.Instance.ExibirPainelLoading();
+
         //Carregar a proxima cena
         SceneManager.LoadScene(idLevel+1);
     }
@@ -251,6 +276,9 @@ public class CanvasGameMng : MonoBehaviour
     /// Método para retornar a cena menu
     /// </summary>
     public void VoltarAoMenu(){
+        //Exibir o painel de carregamento
+        CanvasLoadingMng.Instance.ExibirPainelLoading();
+
         SceneManager.LoadScene(0);
     }
 }

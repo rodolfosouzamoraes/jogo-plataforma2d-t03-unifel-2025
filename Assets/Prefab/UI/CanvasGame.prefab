@@ -1038,7 +1038,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3583171946438245466}
         m_TargetAssemblyTypeName: CanvasGameMng, Assembly-CSharp
-        m_MethodName: ReiniciarLevelAtual
+        m_MethodName: ReiniciarLevelPelaUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
